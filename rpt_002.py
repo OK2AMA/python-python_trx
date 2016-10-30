@@ -5,7 +5,7 @@ few samples and play them back immediately).
 
 import pyaudio
 
-CHUNK = 1024 * 128
+CHUNK = 1024 * 64
 WIDTH = 2
 CHANNELS = 2
 RATE = 44100
@@ -31,6 +31,7 @@ stream.write(data, CHUNK)
 
 stream.stop_stream()
 stream.close()
+
 
 p.terminate()
    
