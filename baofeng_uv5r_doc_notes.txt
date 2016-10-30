@@ -1,0 +1,7 @@
+Baofeng UV5R
+
+notes for hacking hardware inside Baofeng UV 5R case
+
+origin microcontoler use this output
+ - I2C fo control RDA1846
+ - 
