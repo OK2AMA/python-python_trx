@@ -3,5 +3,9 @@ Baofeng UV5R
 notes for hacking hardware inside Baofeng UV 5R case
 
 origin microcontoler use this output
- - I2C fo control RDA1846
- - 
+ - I2C for control RDA1846
+ - pin P56  - switch between UHF and VHF, pin 13
+ - RX pow PC1, pin 43
+ - TX pow P66, pin 24
+ - AUDIO pow P65, pin 24
+
