@@ -1,4 +1,8 @@
-# source http://people.csail.mit.edu/hubert/pyaudio/ 
+#!/usr/bin/env python3
+#
+# By Kuba OK2AMA
+# control your Yaesu FT-857
+
 import pyaudio
 import wave
 import sys
@@ -11,8 +15,7 @@ pravda = True
 prubeh_rec = False
 prubeh_play = False
 
-# By Kuba OK2AMA
-# control your Yaesu FT-857
+
 ser = serial.Serial(
   port='/dev/ttyUSB0',
   baudrate=9600,
@@ -23,7 +26,7 @@ ser = serial.Serial(
 
 print(ser.isOpen())
 ser.setDTR(False)
-time.sleep(2)
+time.sleep(1)
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
@@ -94,13 +97,12 @@ while(pravda):
     squelch = True if (resp_byte & 0B10000000) else False
     s_meter = resp_byte & 0x0F
     
-    time.sleep(0.2)
+    # time.sleep(0.2)
     
     if( (squelch == False ) and (start == 0 ) ): 
         print("Zacinam nahravat")
         start = time.time()
         prubeh_rec = True
-        
         
         p = pyaudio.PyAudio()
 
@@ -110,14 +112,12 @@ while(pravda):
                         input=True,
                         frames_per_buffer=CHUNK)
 
-        print("* recording")
-
         frames = []
 
         
         
-        
-    if( prubeh_rec == True ):    
+    if( prubeh_rec == True ):  
+        print("* recording")
         data = stream.read(CHUNK)
         frames.append(data)
 
