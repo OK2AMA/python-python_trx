@@ -44,16 +44,11 @@ stream = p.open(format=FORMAT,
                 frames_per_buffer=CHUNK)
 
 print("* recording")
-
 frames = []
-
-
 
 """PyAudio Example: Play a WAVE file.
 *********************************************************************
 """
-
-
 
 wf = wave.open("output.wav", 'rb')
 
@@ -74,7 +69,6 @@ stream.stop_stream()
 stream.close()
 
 p.terminate()
-
 
 # ***********************************
 
@@ -125,7 +119,6 @@ while(never_end_loop):
     if( (squelch == True ) and (start != 0 ) and end == 0 ):
         print("Konec nahravky")
         end = time.time() - start
-        
         stream.stop_stream()
         stream.close()
         p.terminate()
@@ -135,7 +128,6 @@ while(never_end_loop):
         wf.setframerate(RATE)
         wf.writeframes(b''.join(frames))
         wf.close()
-        
         prubeh_rec = False    
         
         
@@ -143,21 +135,16 @@ while(never_end_loop):
         print("Zacinam vysilat")
         ser.setDTR(True)
         start_tx = time.time()
-        
-        wf = wave.open("output.wav", 'rb')
-
+        wf = wave.open("output.wav", 'rb'
         p = pyaudio.PyAudio()
-
         stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
                         channels=wf.getnchannels(),
                         rate=wf.getframerate(),
                         output=True)
-
         data = wf.readframes(CHUNK)
         prubeh_play = True
 
-
-        
+		
     if( prubeh_play == True ):    
         while data != '':
             stream.write(data)
